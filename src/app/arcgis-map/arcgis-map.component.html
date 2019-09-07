@@ -1,0 +1,46 @@
+
+ <div>
+  <form>
+    <mat-form-field id="dropdownBasic1">
+      <mat-label><h4>Data Source</h4></mat-label>
+      <br />
+      <br />
+      <mat-select [(ngModel)]="selectedSource" name="food" (selectionChange)="changeSources($event.value)">
+        <mat-option *ngFor="let source of dataSources" [value]="source.id">
+          {{source.sourceName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field id="dropdownBasic2">
+      <mat-label><h4>Layer Type</h4></mat-label>
+      <br />
+      <br />
+      <mat-select [(ngModel)]="selectedType" name="foods" (selectionChange)="changeMapLayerType($event.value)">
+        <mat-option *ngFor="let mapLayerType of mapLayerTypes" [value]="mapLayerType.id">
+          {{mapLayerType.layerType}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+ </div>
+
+<div>
+  <mat-drawer-container class="example-container">
+    <mat-drawer class="insideDiv" #sideNav mode="over" opened="true" [position]="nav_position">
+      Year
+      <ul style="list-style-type:none;">
+        <li>
+          <mat-checkbox id="year2000" [(ngModel)]="twoThousandChecked" (change)="onCheckboxChange($event, '2000')"> 2000 </mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox [(ngModel)]="twoThousand7Checked" (change)="onCheckboxChange($event, '2007')"> 2007</mat-checkbox>
+        </li>
+      </ul>
+    </mat-drawer>
+    <mat-drawer-content>
+      <button class="expandCollapseBTN" (click)="sideNav.toggle()" mat-button> Open/Close </button>
+      <div #mapDivNode id="mapNode">
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
