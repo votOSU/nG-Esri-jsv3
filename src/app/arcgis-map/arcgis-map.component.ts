@@ -108,7 +108,7 @@ export class ArcgisMapComponent implements OnChanges
         this.layer = new ArcGISDynamicMapServiceLayer('https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer', {});
         var layer2 = this.layer;
       
-        
+        console.log("Choosen Source: "+this.selectedSource);
         //This is where the users choices dictates which layer to display
         if(this.selectedSource === 'id1' && this.selectedType === 'id1')
         {
